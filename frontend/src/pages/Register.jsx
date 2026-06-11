@@ -41,9 +41,9 @@ function Register() {
         }
     };
     return (
-        <div className="min-h-screen flex items-center justify-center pt-10 pb-20 relative" style={{backgroundImage: 'url(/Image2-sq.jpeg)', backgroundSize: 'cover', backgroundPosition: 'center'}}>
-            <div className="absolute inset-0 bg-surface opacity-20"/>
-            <div className="relative z-10 bg-surface/90 p-10 rounded-xl shadow-md w-full max-w-lg">
+        <div className="min-h-screen flex items-center justify-center pt-10 pb-20 relative" style={{backgroundImage: 'url(/pattern.svg)', backgroundSize: 'cover', backgroundPosition: 'center'}}>
+            <div className="absolute inset-0 bg-elegantbg opacity-20"/>
+            <div className="relative z-10 bg-elegantbg p-10 rounded-xl shadow-md w-full max-w-lg">
                 <div className="text-center mb-7">
                     <h1 className="font-display text-3xl font-semibold text-primary mb-2">TravelMatch</h1>
                     <p className="text-dark text-base">Register to continue</p>

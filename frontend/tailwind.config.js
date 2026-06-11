@@ -15,6 +15,7 @@ module.exports = {
           surface: '#FFFFFF',
           secondary: '#EFEAFB',
           accent: '#E4DEF0',
+          elegantbg: '#F2F5FF',
       }
     },
   },
