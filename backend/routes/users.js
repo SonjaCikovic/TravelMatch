@@ -43,7 +43,7 @@ router.post('/upload-image', authMiddleware, upload.single('profilna_slika'), as
         if (!req.file) {
             return res.status(400).json({error: 'No file uploaded'});
         }
-        const url = `http://localhost:5000/uploads/${req.file.filename}`;
+        const url = `${process.env.BACKEND_URL || 'http://localhost:5000'}/uploads/${req.file.filename}`;
         await pool.query('UPDATE users SET profilna_slika = $1 WHERE id = $2', [url, req.korisnik.id]);
         res.json({url});
     } catch (err) {
