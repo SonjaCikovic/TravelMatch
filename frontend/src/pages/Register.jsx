@@ -54,7 +54,7 @@ function Register() {
                     <div className="flex gap-4">
                         <div className="flex flex-col gap-1 flex-1">
                             <label className="text-dark text-base font-medium">First Name <span className="text-red-500">*</span></label>
-                                <input
+                                <input required
                                     value={ime}
                                     onChange={(e) => setIme(e.target.value)}
                                     placeholder="Enter First Name"
@@ -63,7 +63,7 @@ function Register() {
                         </div>
                         <div className="flex flex-col gap-1 flex-1">
                             <label className="text-dark text-base font-medium">Last Name <span className="text-red-500">*</span></label>
-                                <input
+                                <input required
                                     value={prezime}
                                     onChange={(e) => setPrezime(e.target.value)}
                                     placeholder="Enter Last Name"
@@ -91,8 +91,8 @@ function Register() {
                             />
                     </div>
                     <div className="flex flex-col gap-1">
-                        <label className="text-dark text-base font-medium">Date of Birth</label>
-                            <input
+                        <label className="text-dark text-base font-medium">Date of Birth <span className="text-red-500">*</span></label>
+                            <input required
                                 value={datumRodenja}
                                 onChange={(e) => setDatumRodenja(e.target.value)}
                                 placeholder="Enter Date of Birth"
