@@ -4,12 +4,13 @@ const router = express.Router();
 const pool = require('../db');
 
 router.post('/:trip_id/requests', authMiddleware, async (req,res) => {
+    console.log('zahtjev primljen', req.params.trip_id, req.korisnik.id);
     try {
         const organizator_id = await pool.query('SELECT organizator_id FROM trips WHERE id = $1', [req.params.trip_id]);
         if (req.korisnik.id === organizator_id.rows[0].organizator_id){
             return res.status(403).json({error: 'Wrong id'});
         }
-        const postojiZahtjev = await pool.query('SELECT * FROM trip_requests WHERE trip_id = $1 AND korisnik_id = $2', [req.params.trip_id, req.korisnik.id]);
+        const postojiZahtjev = await pool.query('SELECT * FROM trip_requests WHERE trip_id = $1 AND user_id = $2', [req.params.trip_id, req.korisnik.id]);
         if (postojiZahtjev.rowCount > 0) {
             return res.status(403).json({error: 'Request already exists'});
         }
@@ -31,17 +32,18 @@ router.post('/:trip_id/requests', authMiddleware, async (req,res) => {
              godine > ogranicenja.rows[0].maksimalna_dob || godine < ogranicenja.rows[0].minimalna_dob) {
             return res.status(403).json({error: 'Cannot join this trip'});
         }
-        const noviZahtjev = await pool.query('INSERT INTO trip_requests (trip_id, korisnik_id) VALUES ($1, $2) RETURNING *', [req.params.trip_id, req.korisnik.id]);
+        const noviZahtjev = await pool.query('INSERT INTO trip_requests (trip_id, user_id) VALUES ($1, $2) RETURNING *', [req.params.trip_id, req.korisnik.id]);
         res.json(noviZahtjev.rows[0]);
     } catch (err) {
         console.error(err);
+        console.log('GREŠKA:', err.message);
         res.status(500).json({error: 'Error on server'});
     }
 });
 
 router.get('/:trip_id/requests/my', authMiddleware, async(req, res) => {
     try {
-        const zahtjev = await pool.query('SELECT * FROM trip_requests WHERE trip_id = $1 AND korisnik_id = $2', [req.params.trip_id, req.korisnik.id]);
+        const zahtjev = await pool.query('SELECT * FROM trip_requests WHERE trip_id = $1 AND user_id = $2', [req.params.trip_id, req.korisnik.id]);
         res.json({sent: zahtjev.rowCount > 0});
     } catch (err) {
         console.error(err);
@@ -55,8 +57,8 @@ router.get('/:trip_id/requests', authMiddleware, async (req,res) => {
         if (organizator.rows[0].organizator_id != req.korisnik.id){
             return res.status(403).json({error: 'Wrong id'});
         }  
-        const zahtjevi = await pool.query(`SELECT trip_requests.id, trip_requests.korisnik_id, trip_requests.status, users.ime, users.prezime, users.profilna_slika
-            FROM trip_requests JOIN users ON users.id = trip_requests.korisnik_id WHERE trip_requests.trip_id = $1 AND trip_requests.status = 'pending'`, [req.params.trip_id]);
+        const zahtjevi = await pool.query(`SELECT trip_requests.id, trip_requests.user_id, trip_requests.status, users.ime, users.prezime, users.profilna_slika
+            FROM trip_requests JOIN users ON users.id = trip_requests.user_id WHERE trip_requests.trip_id = $1 AND trip_requests.status = 'pending'`, [req.params.trip_id]);
         res.json(zahtjevi.rows);
     } catch (err) {
         console.error(err);
@@ -74,8 +76,8 @@ router.put('/:trip_id/requests/:request_id', authMiddleware, async (req,res) => 
         }  
         const stanjeZahtjeva = await pool.query('UPDATE trip_requests SET status = $1 WHERE id = $2 RETURNING *', [status, req.params.request_id]);
         if (status === 'accepted'){
-            const zahtjev = await pool.query('SELECT korisnik_id FROM trip_requests WHERE id = $1', [req.params.request_id]);
-            const noviKorisnik = await pool.query('INSERT INTO trip_participants (trip_id, user_id) VALUES ($1, $2)', [req.params.trip_id, zahtjev.rows[0].korisnik_id]);
+            const zahtjev = await pool.query('SELECT user_id FROM trip_requests WHERE id = $1', [req.params.request_id]);
+            const noviKorisnik = await pool.query('INSERT INTO trip_participants (trip_id, user_id) VALUES ($1, $2)', [req.params.trip_id, zahtjev.rows[0].user_id]);
         }
         res.json({message: 'User added'});
     } catch (err) {
