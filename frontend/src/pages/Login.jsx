@@ -28,7 +28,7 @@ function Login() {
         }
     };
     return (
-        <div className="min-h-screen flex items-center justify-center pb-20 relative" style={{backgroundImage: 'url(/Image1-field.jpeg)', backgroundSize: 'cover', backgroundPosition: 'center'}}>
+        <div className="min-h-screen flex items-center justify-center pb-20 relative" style={{backgroundImage: 'url(/Image2-sq.jpeg)', backgroundSize: 'cover', backgroundPosition: 'center'}}>
             <div className="absolute inset-0 bg-surface opacity-30"/>
             <div className="relative z-10 bg-surface/90 p-10 rounded-xl shadow-md w-full max-w-lg">
                 <div className="text-center mb-7">
