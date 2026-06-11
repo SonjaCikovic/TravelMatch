@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API = 'https://travelmatch-backend.onrender.com';
+const API = 'https://travelmatch-backend.onrender.com/api';
 
 export const register = (podaci) => {
     return axios.post(`${API}/auth/register`, podaci);
