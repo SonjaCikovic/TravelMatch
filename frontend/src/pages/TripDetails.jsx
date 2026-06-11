@@ -214,7 +214,7 @@ function TripDetails() {
                                 ) : zahtjevPoslan ? (
                                     <p className="text-primary font-medium">Request sent</p>
                                 ) : tripDetails.status === 'active' ? (
-                                    <button onClick={async () => {await sendRequest(id); setZahtjevPoslan(true);}} className="bg-primary text-white px-6 py-3 rounded-lg hover:bg-violet-800 font-medium w-full">Join</button>
+                                    <button onClick={async () => {try{await sendRequest(id); setZahtjevPoslan(true);}catch(err){alert(err.response?.data?.error || 'Sorry, you cannot join this trip.');}}} className="bg-primary text-white px-6 py-3 rounded-lg hover:bg-violet-800 font-medium w-full">Join</button>
                                 ) : null}
                             </div>
                             <div className="mb-8">

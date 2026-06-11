@@ -216,17 +216,18 @@ function CreateTrip() {
                         <div className="flex flex-col gap-1 flex-1">
                             <label className="text-dark text-base font-medium">Allowed Age Range</label>
                             <div className="flex gap-4"> 
-                                <input
-                                    value={maxDob}
-                                    onChange={(e) => setMaxDob(e.target.value)}
-                                    placeholder="Enter Maximum Age of Participants"
-                                    type="number"
-                                    className="border border-accent rounded-lg px-4 py-3 bg-white focus:outline-none focus:border-primary text-dark w-full flex-1"
-                                /> 
+        
                                 <input
                                     value={minDob}
                                     onChange={(e) => setMinDob(e.target.value)}
                                     placeholder="Enter Minimum Age of Participants"
+                                    type="number"
+                                    className="border border-accent rounded-lg px-4 py-3 bg-white focus:outline-none focus:border-primary text-dark w-full flex-1"
+                                /> 
+                                <input
+                                    value={maxDob}
+                                    onChange={(e) => setMaxDob(e.target.value)}
+                                    placeholder="Enter Maximum Age of Participants"
                                     type="number"
                                     className="border border-accent rounded-lg px-4 py-3 bg-white focus:outline-none focus:border-primary text-dark w-full flex-1"
                                 /> 
