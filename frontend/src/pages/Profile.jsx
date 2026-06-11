@@ -14,6 +14,7 @@ function Profile() {
     const [editPodaci, setEditPodaci] = useState({});
     const [prosjekOcjena, setProsjekOcjena] = useState(null);
     const [uploading, setUploading] = useState(false);
+    const [ocjene, setOcjene] = useState([]);
 
     useEffect (() => {
         if (id) {
@@ -23,6 +24,7 @@ function Profile() {
                     setUserProfileDits(odgovor.data);
                     const ocjene = await getUserRatings(id);
                     setProsjekOcjena(ocjene.data.prosjek);
+                    setOcjene(ocjene.data.ratings);
                 } catch (err) {
                     console.error(err);
                 }
@@ -35,6 +37,7 @@ function Profile() {
                     setMyProfileDits(odgovor.data);
                     const ocjene = await getUserRatings(odgovor.data.id);
                     setProsjekOcjena(ocjene.data.prosjek);
+                    setOcjene(ocjene.data.ratings);
                 } catch (err) {
                     console.error(err);
                 }
@@ -102,6 +105,23 @@ function Profile() {
                                     <div className="w-full h-px bg-accent mb-6"/>
                                     <h3 className="text-dark font-medium mb-2">About</h3>
                                     <p className="text-dark text-base">{userProfileDits.bio}</p>
+                                </>
+                            )}
+                            {ocjene.length > 0 && (
+                                <>
+                                    <div className="w-full h-px bg-accent mb-6"/>
+                                    <h3 className="text-dark font-medium mb-4">Reviews</h3>
+                                    <div className="flex flex-col gap-3">
+                                        {ocjene.map(o => (
+                                            <div key={o.id} className="bg-light border border-accent rounded-xl p-4">
+                                                <div className="flex items-center gap-2 mb-1">
+                                                    <span className="text-dark font-medium text-sm">{o.ime} {o.prezime}</span>
+                                                    <span className="flex items-center gap-1 text-primary text-sm"><Star size={12}/>{o.ocjena}</span>
+                                                </div>
+                                                {o.komentar && <p className="text-muted text-sm">{o.komentar}</p>}
+                                            </div>
+                                        ))}
+                                    </div>
                                 </>
                             )}
                         </div>
@@ -199,6 +219,23 @@ function Profile() {
                                             <div className="w-full h-px bg-accent mb-6"/>
                                             <h3 className="text-dark font-medium mb-2">About</h3>
                                             <p className="text-dark text-base">{myProfileDits.bio}</p>
+                                        </>
+                                    )}
+                                    {ocjene.length > 0 && (
+                                        <>
+                                            <div className="w-full h-px bg-accent mb-6"/>
+                                            <h3 className="text-dark font-medium mb-4">Reviews</h3>
+                                            <div className="flex flex-col gap-3">
+                                                {ocjene.map(o => (
+                                                    <div key={o.id} className="bg-light border border-accent rounded-xl p-4">
+                                                        <div className="flex items-center gap-2 mb-1">
+                                                            <span className="text-dark font-medium text-sm">{o.ime} {o.prezime}</span>
+                                                            <span className="flex items-center gap-1 text-primary text-sm"><Star size={12}/>{o.ocjena}</span>
+                                                        </div>
+                                                        {o.komentar && <p className="text-muted text-sm">{o.komentar}</p>}
+                                                    </div>
+                                                ))}
+                                            </div>
                                         </>
                                     )}
                                 </div>

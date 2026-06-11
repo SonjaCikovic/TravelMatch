@@ -31,7 +31,7 @@ router.post('/:trip_id/ratings', authMiddleware, async (req,res) => {
 
 router.get('/users/:user_id/ratings', async (req,res) => {
     try {
-        const ocjene = await pool.query('SELECT * FROM ratings WHERE ocjenjen_id = $1', [req.params.user_id]);
+        const ocjene = await pool.query('SELECT ratings.*, users.ime, users.prezime FROM ratings JOIN users ON users.id = ratings.ocjenjivac_id WHERE ocjenjen_id = $1', [req.params.user_id]);
         const prosjek = await pool.query('SELECT ROUND(AVG(ocjena), 2) as prosjek FROM ratings WHERE ocjenjen_id = $1', [req.params.user_id]);
         res.json({ratings: ocjene.rows, prosjek: prosjek.rows[0].prosjek});
     } catch (err) {
