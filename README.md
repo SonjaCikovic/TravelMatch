@@ -6,5 +6,5 @@ Web aplikacija za povezivanje korisnika u svrhu zajedničkih putovanja.
 https://travel-match-kappa.vercel.app
 
 ## Test korisnik
-Email: test@test.com
+Email: ana@gmail.com
 Lozinka: test123
