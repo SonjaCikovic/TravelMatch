@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API = 'http://localhost:5000/api';
+const API = 'https://travelmatch-backend.onrender.com';
 const getToken = () => localStorage.getItem('token');
 
 export const addRating = (tripId, podaci) => {
