@@ -28,7 +28,7 @@ function Login() {
         }
     };
     return (
-        <div className="min-h-screen flex items-center justify-center pb-20 relative" style={{backgroundImage: 'url(/pattern.svg)', backgroundSize: 'cover', backgroundPosition: 'center'}}>
+        <div className="min-h-screen bg-pattern flex items-center justify-center pb-20 relative">
             <div className="absolute inset-0 bg-elegantbg opacity-20"/>
             <div className="relative z-10 bg-elegantbg p-10 rounded-xl shadow-md w-full max-w-lg">
                 <div className="text-center mb-7">
