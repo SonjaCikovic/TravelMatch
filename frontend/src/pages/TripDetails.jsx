@@ -3,8 +3,7 @@ import { useParams } from "react-router-dom";
 import { getTrip, sendRequest, getParticipants, getRequests, handleRequest, getMyRequest, removeParticipant } from "../api/trips";
 import Navbar from "../components/Navbar";
 import { useNavigate } from "react-router-dom";
-import { MapContainer, TileLayer, Marker, Popup, Polyline, ZoomControl } from 'react-leaflet';
-import L from 'leaflet';
+import { MapContainer, TileLayer, Popup, Polyline, CircleMarker } from 'react-leaflet';
 import { Trash, Star, Calendar, Moon, Users } from "lucide-react";
 import { addRating, getMyRatings } from "../api/ratings";
 
@@ -171,9 +170,9 @@ function TripDetails() {
                                             <MapContainer center={[koordinate[0].lat, koordinate[0].lng]} zoom={6} style={{height: '300px', width: '100%'}}>
                                                 <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
                                                 {koordinate.map((k, index) => (
-                                                    <Marker key={index} position={[k.lat, k.lng]}>
+                                                    <CircleMarker key={index} position={[k.lat, k.lng]} radius={8} fillColor="#6D28D9" fillOpacity={1}>
                                                         <Popup>{k.naziv}</Popup>
-                                                    </Marker>
+                                                    </CircleMarker>
                                                 ))}
                                                 <Polyline positions={koordinate.map(k => [k.lat, k.lng])} color="#6D28D9"/>
                                             </MapContainer>
@@ -198,7 +197,7 @@ function TripDetails() {
                                                         {zahtjev.ime[0]}{zahtjev.prezime[0]}
                                                     </div>
                                                     <div className="flex-1">
-                                                        <p onClick={() => navigate(`/profile/${zahtjev.korisnik_id}`)} className="text-dark font-semibold cursor-pointer hover:text-primary">{zahtjev.ime} {zahtjev.prezime}</p>
+                                                        <p onClick={() => navigate(`/profile/${zahtjev.user_id}`)} className="text-dark font-semibold cursor-pointer hover:text-primary">{zahtjev.ime} {zahtjev.prezime}</p>
                                                         <p className="text-muted text-sm">Wants to join this trip</p>
                                                     </div>
                                                     <button onClick={() => obradiZahtjev(zahtjev.id, 'accepted')} className="bg-primary text-white px-4 py-2 rounded-lg text-sm font-bold hover:bg-violet-800">Accept</button>

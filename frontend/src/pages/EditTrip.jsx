@@ -66,6 +66,10 @@ function EditTrip() {
                 alert('Please enter at least one destination!');
                 return;
             }
+            if (new Date(datumPolaska) < new Date()) {
+                alert('Departure date cannot be in the past!');
+                return;
+            }
             const odgovor = await updateTrip(id, {
                             naslov, opis, pocetni_grad: postaja[0].naziv, zavrsni_grad: postaja[postaja.length - 1].naziv, datum_polaska: datumPolaska, datum_povratka: datumPovratka,
                             kategorija, budzet: budzet||null, tip_smjestaja: tipSmjestaja, tip_organizacije: tipOrganizacije, max_sudionici: maxSudionika||null, dozvoljeni_spol: dozvoljenSpol,
