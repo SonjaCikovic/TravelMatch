@@ -28,7 +28,7 @@ function Login() {
         }
     };
     return (
-        <div className="min-h-screen bg-light flex items-center justify-center pb-20">
+        <div className="min-h-screen flex items-center justify-center pb-20" style={{backgroundImage: 'url(/Image2-sq.jpeg)', backgroundSize: 'cover', backgroundPosition: 'center'}}>
             
             <div className="bg-surface p-10 rounded-xl shadow-md w-full max-w-lg">
                 <div className="text-center mb-7">

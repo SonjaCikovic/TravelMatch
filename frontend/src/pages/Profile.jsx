@@ -109,8 +109,8 @@ function Profile() {
                             )}
                             {ocjene.length > 0 && (
                                 <>
-                                    <div className="w-full h-px bg-accent mb-6"/>
-                                    <h3 className="text-dark font-medium mb-4">Reviews</h3>
+                                    
+                                    <h3 className="text-dark font-medium mb-4 mt-5">Reviews</h3>
                                     <div className="flex flex-col gap-3">
                                         {ocjene.map(o => (
                                             <div key={o.id} className="bg-light border border-accent rounded-xl p-4">
@@ -222,9 +222,8 @@ function Profile() {
                                         </>
                                     )}
                                     {ocjene.length > 0 && (
-                                        <>
-                                            <div className="w-full h-px bg-accent mb-6"/>
-                                            <h3 className="text-dark font-medium mb-4">Reviews</h3>
+                                        <>ž
+                                            <h3 className="text-dark font-medium mb-4 mt-5">Reviews</h3>
                                             <div className="flex flex-col gap-3">
                                                 {ocjene.map(o => (
                                                     <div key={o.id} className="bg-light border border-accent rounded-xl p-4">

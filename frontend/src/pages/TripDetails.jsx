@@ -3,10 +3,21 @@ import { useParams } from "react-router-dom";
 import { getTrip, sendRequest, getParticipants, getRequests, handleRequest, getMyRequest, removeParticipant } from "../api/trips";
 import Navbar from "../components/Navbar";
 import { useNavigate } from "react-router-dom";
-import { MapContainer, TileLayer, Marker, Popup, Polyline, ZoomControl } from 'react-leaflet';
+import { MapContainer, TileLayer, Marker, Popup, Polyline, ZoomControl, useMap } from 'react-leaflet';
 import L from 'leaflet';
 import { Trash, Star, Calendar, Moon, Users } from "lucide-react";
 import { addRating, getMyRatings } from "../api/ratings";
+
+function FitBounds({ koordinate }) {
+    const map = useMap();
+    useEffect(() => {
+        if (koordinate.length > 1) {
+            const bounds = koordinate.map(k => [k.lat, k.lng]);
+            map.fitBounds(bounds, { padding: [30, 30] });
+        }
+    }, [koordinate, map]);
+    return null;
+}
 
 function TripDetails() {
     const {id} = useParams();
@@ -175,7 +186,8 @@ function TripDetails() {
                                     </div>
                                     {koordinate.length > 0 && (
                                         <div className="flex-1 rounded-xl overflow-hidden border border-accent" style={{minHeight: '300px'}}>
-                                            <MapContainer center={[koordinate[0].lat, koordinate[0].lng]} zoom={6} style={{height: '300px', width: '100%'}}>
+                                            <MapContainer center={[koordinate[0].lat, koordinate[0].lng]} zoom={6} style={{height: '100%', width: '100%'}}>
+                                                <FitBounds koordinate={koordinate}/>
                                                 <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
                                                 {koordinate.map((k, index) => (
                                                     <Marker key={index} position={[k.lat, k.lng]} icon={customIcon}>
@@ -205,7 +217,7 @@ function TripDetails() {
                                                         {zahtjev.ime[0]}{zahtjev.prezime[0]}
                                                     </div>
                                                     <div className="flex-1">
-                                                        <p onClick={() => navigate(`/profile/${zahtjev.korisnik_id}`)} className="text-dark font-semibold cursor-pointer hover:text-primary">{zahtjev.ime} {zahtjev.prezime}</p>
+                                                        <p onClick={() => navigate(`/profile/${zahtjev.user_id}`)} className="text-dark font-semibold cursor-pointer hover:text-primary">{zahtjev.ime} {zahtjev.prezime}</p>
                                                         <p className="text-muted text-sm">Wants to join this trip</p>
                                                     </div>
                                                     <button onClick={() => obradiZahtjev(zahtjev.id, 'accepted')} className="bg-primary text-white px-4 py-2 rounded-lg text-sm font-bold hover:bg-violet-800">Accept</button>
