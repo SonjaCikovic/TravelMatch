@@ -170,9 +170,11 @@ function TripDetails() {
                                             <MapContainer center={[koordinate[0].lat, koordinate[0].lng]} zoom={6} style={{height: '300px', width: '100%'}}>
                                                 <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
                                                 {koordinate.map((k, index) => (
-                                                    <CircleMarker key={index} position={[k.lat, k.lng]} radius={8} fillColor="#6D28D9" fillOpacity={1}>
-                                                        <Popup>{k.naziv}</Popup>
-                                                    </CircleMarker>
+                                                    k.lat && k.lng ? (
+                                                        <CircleMarker key={index} position={[k.lat, k.lng]} radius={8} fillColor="#6D28D9" fillOpacity={1}>
+                                                            <Popup>{k.naziv}</Popup>
+                                                        </CircleMarker>
+                                                    ) : null
                                                 ))}
                                                 <Polyline positions={koordinate.map(k => [k.lat, k.lng])} color="#6D28D9"/>
                                             </MapContainer>
