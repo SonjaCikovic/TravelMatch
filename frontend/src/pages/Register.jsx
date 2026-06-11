@@ -41,7 +41,8 @@ function Register() {
         }
     };
     return (
-        <div className="min-h-screen bg-light flex items-center justify-center pt-10 pb-20">
+        <div className="min-h-screen flex items-center justify-center pt-10 pb-20" style={{backgroundImage: 'url(/Image4-palm.jpeg)', backgroundSize: 'cover', backgroundPosition: 'center'}}>
+            <div className="absolute inset-0 bg-primary opacity-20"/>
             <div className="bg-surface p-10 rounded-xl shadow-md w-full max-w-lg">
                 <div className="text-center mb-7">
                     <h1 className="font-display text-3xl font-semibold text-primary mb-2">TravelMatch</h1>
