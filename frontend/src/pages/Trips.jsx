@@ -51,15 +51,15 @@ function Trips() {
             <Navbar />
             <div className="relative h-64 overflow-hidden">
                 <img src="/Image2-sq.jpeg" alt="Travel" className="w-full h-full object-cover"/>
-                <div className="absolute inset-0 bg-elegantbg opacity-40"/>
+                <div className="absolute inset-0 bg-light opacity-50"/>
                 <div className="absolute inset-0" style={{background: 'linear-gradient(to bottom, transparent 30%, #F7F5FC)'}}/>
                 <div className="absolute inset-0 flex flex-col justify-start pt-12 px-8 max-w-4xl mx-auto">
-                    <p className="text-xs font-bold uppercase tracking-widest text-dark mb-2">Find your people</p>
-                    <h1 className="text-4xl font-bold text-dark mb-2">Explore Trips</h1>
+                    <p className="text-xs font-bold uppercase tracking-widest text-primaryDark mb-2">Find your people</p>
+                    <h1 className="text-4xl font-bold text-primaryDark mb-2">Explore Trips</h1>
                 </div>
             </div>
             <div className="max-w-4xl mx-auto px-6 pt-8 pb-20">
-                <div className="mb-8 flex items-center bg-white border border-accent overflow-hidden shadow-sm relative z-10" style={{borderRadius: '999px', padding: '7px 7px 7px 10px', marginTop: '-5rem'}}>
+                <div className="mb-8 flex items-center bg-white border border-accent overflow-hidden shadow-sm relative z-10" style={{borderRadius: '999px', padding: '7px 7px 7px 10px', marginTop: '-6rem'}}>
                     <div className="flex-1 px-4 py-2 border-r border-accent">
                         <p className="text-xs font-bold text-primary mb-1">Where</p>
                         <input value={filterGrad} onChange={(e) => setFilterGrad(e.target.value)} placeholder="Search by city..." className="w-full text-dark text-sm focus:outline-none bg-transparent font-medium"/>

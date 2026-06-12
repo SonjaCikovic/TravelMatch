@@ -16,6 +16,7 @@ module.exports = {
           secondary: '#EFEAFB',
           accent: '#E4DEF0',
           elegantbg: '#F2F5FF',
+          primaryDark: '#4C1D95',
       }
     },
   },
