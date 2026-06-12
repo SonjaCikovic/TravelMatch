@@ -179,9 +179,9 @@ function TripDetails() {
                                                 </div>
                                                 <div className="pb-4">
                                                     <p className="text-dark font-semibold text-base">{grad.grad}</p>
-                                                    {index < tripDetails.gradovi.length - 1 && grad.prijevoz && (
+                                                    {index > 0 && grad.prijevoz && (
                                                         <span className="inline-flex items-center gap-1 text-xs font-semibold text-muted bg-light border border-accent px-2 py-1 rounded-lg mt-1">
-                                                            {grad.prijevoz} • {grad.trajanje}
+                                                            {grad.prijevoz} - {grad.trajanje}
                                                         </span>
                                                     )}
                                                 </div>
