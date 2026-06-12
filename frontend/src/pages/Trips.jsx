@@ -50,7 +50,15 @@ function Trips() {
         <div className="min-h-screen bg-light">
             <Navbar />
             <div className="max-w-4xl mx-auto px-6 pt-8 pb-20">
-                <h2 className="text-2xl font-semibold text-dark mb-8">Explore Trips</h2>
+                <div className="relative h-64 overflow-hidden">
+                    <img src="/Image2-sq.jpeg" alt="Travel" className="w-full h-full object-cover"/>
+                    <div className="absolute inset-0" style={{background: 'linear-gradient(to bottom, transparent 30%, #F7F5FC)'}}/>
+                    <div className="absolute inset-0 flex flex-col justify-center px-8 max-w-4xl mx-auto">
+                        <p className="text-xs font-bold uppercase tracking-widest text-white mb-2">Find your people</p>
+                        <h1 className="text-4xl font-bold text-white mb-2">Explore Trips</h1>
+                        <p className="text-white text-base opacity-90">Open journeys looking for one more traveller. Pick a route, find your pace, go together.</p>
+                    </div>
+                </div>
                 <div className="mb-8 flex items-center bg-white border border-accent overflow-hidden shadow-sm" style={{borderRadius: '999px', padding: '7px 7px 7px 10px'}}>
                     <div className="flex-1 px-4 py-2 border-r border-accent">
                         <p className="text-xs font-bold text-primary mb-1">Where</p>
