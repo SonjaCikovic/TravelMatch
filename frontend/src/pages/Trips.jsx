@@ -51,11 +51,11 @@ function Trips() {
             <Navbar />
             <div className="relative h-64 overflow-hidden">
                 <img src="/Image2-sq.jpeg" alt="Travel" className="w-full h-full object-cover"/>
-                <div className="absolute inset-0 bg-black opacity-30"/>
+                <div className="absolute inset-0 bg-elegantbg opacity-30"/>
                 <div className="absolute inset-0" style={{background: 'linear-gradient(to bottom, transparent 30%, #F7F5FC)'}}/>
                 <div className="absolute inset-0 flex flex-col justify-start pt-12 px-8 max-w-4xl mx-auto">
-                    <p className="text-xs font-bold uppercase tracking-widest text-white mb-2">Find your people</p>
-                    <h1 className="text-4xl font-bold text-white mb-2">Explore Trips</h1>
+                    <p className="text-xs font-bold uppercase tracking-widest text-dark mb-2">Find your people</p>
+                    <h1 className="text-4xl font-bold text-primary mb-2">Explore Trips</h1>
                 </div>
             </div>
             <div className="max-w-4xl mx-auto px-6 pt-8 pb-20">
