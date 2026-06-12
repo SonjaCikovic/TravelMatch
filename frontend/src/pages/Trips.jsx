@@ -54,8 +54,8 @@ function Trips() {
                 <div className="absolute inset-0 bg-light opacity-60"/>
                 <div className="absolute inset-0" style={{background: 'linear-gradient(to bottom, transparent 30%, #F7F5FC)'}}/>
                 <div className="absolute inset-0 flex flex-col justify-start pt-12 px-8 max-w-4xl mx-auto">
-                    <p className="text-xs font-bold uppercase tracking-widest text-primaryDark mb-2">Find your people</p>
-                    <h1 className="text-4xl font-bold text-primaryDark mb-2">Explore Trips</h1>
+                    <p className="text-xs font-bold uppercase tracking-widest text-primaryDark mb-2" style={{textShadow: '0 2px 8px rgba(255,255,255,0.9)'}}>Find your people</p>
+                    <h1 className="text-4xl font-bold text-primaryDark mb-2" style={{textShadow: '0 2px 8px rgba(255,255,255,0.9)'}}>Explore Trips</h1>
                 </div>
             </div>
             <div className="max-w-4xl mx-auto px-6 pt-8 pb-20">
