@@ -5,7 +5,7 @@ import Navbar from "../components/Navbar";
 import { useNavigate } from "react-router-dom";
 import { MapContainer, TileLayer, Marker, Popup, Polyline, ZoomControl, useMap } from 'react-leaflet';
 import L from 'leaflet';
-import { Trash, Star, Calendar, Moon, Users } from "lucide-react";
+import { Trash, Star, Calendar, Moon, Users, Telephone, Mail } from "lucide-react";
 import { addRating, getMyRatings } from "../api/ratings";
 
 function FitBounds({ koordinate }) {
@@ -252,8 +252,8 @@ function TripDetails() {
                                                 <p onClick={() => navigate(`/profile/${sudionik.id}`)} className="text-dark font-semibold cursor-pointer hover:text-primary flex-1">{sudionik.ime} {sudionik.prezime}</p>
                                                 {parseInt(tripDetails.organizator_id) === userId && (
                                                     <div className="flex items-center gap-4 text-sm text-muted">
-                                                        <span>{sudionik.telefon}</span>
-                                                        <span>{sudionik.email}</span>
+                                                        <span className="flex items-center gap-1"><Telephone size={14}/>{sudionik.telefon}</span>
+                                                        <span className="flex items-center gap-1"><Mail size={14}/>{sudionik.email}</span>
                                                         <button onClick={() => ukloniSudionika(sudionik.id)} className="text-muted hover:text-red-500 flex items-center gap-1"><Trash size={14}/>Remove</button>
                                                     </div>
                                                 )}

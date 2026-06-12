@@ -131,24 +131,28 @@ function EditTrip() {
                                                 className="border border-accent rounded-lg px-4 py-3 bg-white focus:outline-none focus:border-primary text-dark w-full"
                                             />
                                         </div>
-                                        <div className="flex flex-col gap-1 flex-1">
-                                            <label className="text-dark text-base font-medium">Transport</label>
-                                            <input
-                                                value={p.prijevoz}
-                                                onChange={(e) => promjeniPostaju(index, 'prijevoz', e.target.value)}
-                                                placeholder="Enter Transport Type"
-                                                className="border border-accent rounded-lg px-4 py-3 bg-white focus:outline-none focus:border-primary text-dark w-full"
-                                            />
-                                        </div>
-                                        <div className="flex flex-col gap-1 flex-1">
-                                            <label className="text-dark text-base font-medium">Duration</label>
-                                            <input
-                                                value={p.trajanje}
-                                                onChange={(e) => promjeniPostaju(index, 'trajanje', e.target.value)}
-                                                placeholder="Enter Duration"
-                                                className="border border-accent rounded-lg px-4 py-3 bg-white focus:outline-none focus:border-primary text-dark w-full"
-                                            />
-                                        </div>
+                                        {index > 0 && (
+                                            <>
+                                                <div className="flex flex-col gap-1 flex-1">
+                                                    <label className="text-dark text-base font-medium">Transport</label>
+                                                    <input
+                                                        value={p.prijevoz}
+                                                        onChange={(e) => promjeniPostaju(index, 'prijevoz', e.target.value)}
+                                                        placeholder="Enter Transport Type"
+                                                        className="border border-accent rounded-lg px-4 py-3 bg-white focus:outline-none focus:border-primary text-dark w-full"
+                                                    />
+                                                </div>
+                                                <div className="flex flex-col gap-1 flex-1">
+                                                    <label className="text-dark text-base font-medium">Duration</label>
+                                                    <input
+                                                        value={p.trajanje}
+                                                        onChange={(e) => promjeniPostaju(index, 'trajanje', e.target.value)}
+                                                        placeholder="Enter Duration"
+                                                        className="border border-accent rounded-lg px-4 py-3 bg-white focus:outline-none focus:border-primary text-dark w-full"
+                                                    />
+                                                </div>
+                                            </>
+                                        )}
                                     </div>
                                 </div>
                             ))}
