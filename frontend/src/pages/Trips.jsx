@@ -59,7 +59,7 @@ function Trips() {
                 </div>
             </div>
             <div className="max-w-4xl mx-auto px-6 pt-8 pb-20">
-                <div className="mb-8 flex items-center bg-white border border-accent overflow-hidden shadow-sm -mt-18 relative z-10" style={{borderRadius: '999px', padding: '7px 7px 7px 10px'}}>
+                <div className="mb-8 flex items-center bg-white border border-accent overflow-hidden shadow-sm relative z-10" style={{borderRadius: '999px', padding: '7px 7px 7px 10px', marginTop: '-3rem'}}>
                     <div className="flex-1 px-4 py-2 border-r border-accent">
                         <p className="text-xs font-bold text-primary mb-1">Where</p>
                         <input value={filterGrad} onChange={(e) => setFilterGrad(e.target.value)} placeholder="Search by city..." className="w-full text-dark text-sm focus:outline-none bg-transparent font-medium"/>
